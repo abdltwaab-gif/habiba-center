@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مركز حبيبة | تخاطب وتعديل سلوك – منيا القمح، الشرقية</title>
+  <meta name="description" content="مركز حبيبة للتخاطب وتعديل السلوك بمنيا القمح، الشرقية. جلسات تخاطب، تحليل سلوك تطبيقي ABA، تربية خاصة، وتنمية مهارات بإشراف أ/ حبيبة محمد عادل." />
+
+  <!-- خطوط Google: Cairo للعناوين و Tajawal للنصوص -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       مركز حبيبة — ملف تصميم واحد
+       اللوحة: تركواز + أزرق فاتح + بنفسجي ناعم + أصفر دافئ
+       ============================================================ */
+    :root {
+      --teal:        #17A6A1;   /* التركواز الأساسي */
+      --teal-dark:   #0E7A76;
+      --ink:         #1A4A48;   /* نص داكن مريح */
+      --sky:         #BBE9F2;   /* أزرق فاتح باستيل */
+      --lavender:    #BAAAD7;   /* بنفسجي ناعم */
+      --purple:      #7B6BB5;
+      --yellow:      #FFD66B;   /* أصفر دافئ */
+      --yellow-soft: #FFF3D6;
+      --bg:          #F8FDFC;   /* خلفية فاتحة */
+      --white:       #FFFFFF;
+      --gray:        #5B7674;
+      --radius:      22px;
+      --shadow:      0 10px 30px rgba(26, 74, 72, .08);
+      --shadow-lg:   0 18px 45px rgba(26, 74, 72, .14);
+      --font-head:   'Cairo', sans-serif;
+      --font-body:   'Tajawal', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.35; }
+
+    img, svg { display: block; max-width: 100%; }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(1140px, 92%);
+      margin-inline: auto;
+    }
+
+    section { padding: 72px 0; position: relative; }
+
+    /* ---------- عناوين الأقسام ---------- */
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1.5px solid var(--sky);
+      color: var(--teal-dark);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: .85rem;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .section-tag::before {
+      content: "";
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--yellow);
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      color: var(--gray);
+      max-width: 640px;
+      font-size: 1.05rem;
+    }
+    .section-head { margin-bottom: 44px; }
+    .section-head.center { text-align: center; }
+    .section-head.center .section-sub { margin-inline: auto; }
+
+    /* خط تحتي مرسوم يدوياً تحت الكلمات المميزة */
+    .scribble {
+      position: relative;
+      white-space: nowrap;
+      color: var(--teal-dark);
+    }
+    .scribble > svg {
+      position: absolute;
+      right: 0; left: 0;
+      bottom: -.18em;
+      width: 100%;
+      height: .35em;
+      color: var(--yellow);
+      z-index: -0;
+    }
+
+    /* ---------- أنيميشن الظهور عند السكرول ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .65s ease-out, transform .65s ease-out;
+      transition-delay: var(--d, 0s);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ============================================================
+       1) شريط التنقل
+       ============================================================ */
+    .navbar {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, .82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(187, 233, 242, .6);
+      transition: box-shadow .3s;
+    }
+    .navbar.scrolled { box-shadow: 0 6px 24px rgba(26, 74, 72, .08); }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--teal-dark);
+    }
+    .logo .logo-mark {
+      width: 42px; height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--teal), var(--sky));
+      display: grid;
+      place-items: center;
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(23, 166, 161, .35);
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: none;
+      list-style: none;
+      align-items: center;
+      gap: 26px;
+      font-weight: 500;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 6px 2px;
+      color: var(--ink);
+      transition: color .2s;
+      font-size: .98rem;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 0; height: 3px;
+      border-radius: 3px;
+      background: var(--yellow);
+      transition: width .25s ease;
+    }
+    .nav-links a:hover { color: var(--teal-dark); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a.active { color: var(--teal-dark); font-weight: 700; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 12px 26px;
+      font-size: .98rem;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      white-space: nowrap;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(23, 166, 161, .35);
+    }
+    .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 12px 26px rgba(23, 166, 161, .4); }
+    .btn-outline {
+      background: var(--white);
+      color: var(--teal-dark);
+      border: 2px solid var(--sky);
+    }
+    .btn-outline:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .btn-whatsapp {
+      background: #22c15e;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(34, 193, 94, .35);
+    }
+    .btn-whatsapp:hover { background: #1aa84f; transform: translateY(-2px); }
+    .nav-cta { display: none; }
+
+    /* زر القائمة للموبايل */
+    .nav-toggle {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      border: 1.5px solid var(--sky);
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      display: block;
+      width: 20px; height: 2.5px;
+      border-radius: 3px;
+      background: var(--teal-dark);
+      position: relative;
+      transition: .25s;
+    }
+    .nav-toggle span::before { position: absolute; top: -6px; }
+    .nav-toggle span::after  { position: absolute; top: 6px; }
+    .nav-toggle.open span { background: transparent; }
+    .nav-toggle.open span::before { top: 0; transform: rotate(45deg); }
+    .nav-toggle.open span::after  { top: 0; transform: rotate(-45deg); }
+
+    /* قائمة الموبايل المنسدلة */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: var(--white);
+      border-top: 1px solid var(--sky);
+      padding: 14px 4% 22px;
+      list-style: none;
+    }
+    .mobile-menu.show { display: flex; }
+    .mobile-menu a {
+      display: block;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-family: var(--font-head);
+      color: var(--ink);
+    }
+    .mobile-menu a:hover { background: var(--bg); color: var(--teal-dark); }
+    .mobile-menu .btn { margin-top: 10px; }
+
+    @media (min-width: 900px) {
+      .nav-links { display: flex; }
+      .nav-cta { display: inline-flex; }
+      .nav-toggle { display: none; }
+      .mobile-menu { display: none !important; }
+    }
+
+    /* ============================================================
+       2) Hero
+       ============================================================ */
+    .hero {
+      padding: 140px 0 90px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(600px 400px at 90% 0%, rgba(187, 233, 242, .55), transparent 65%),
+        radial-gradient(500px 380px at 0% 100%, rgba(186, 170, 215, .28), transparent 65%),
+        var(--bg);
+    }
+    .hero-grid {
+      display: grid;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow-soft);
+      border: 1.5px solid var(--yellow);
+      color: #8a6a10;
+      font-weight: 700;
+      font-family: var(--font-head);
+      font-size: .85rem;
+      border-radius: 999px;
+      padding: 7px 16px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.1rem, 6.5vw, 3.6rem);
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+    .hero p.lead {
+      color: var(--gray);
+      font-size: 1.12rem;
+      max-width: 520px;
+      margin-bottom: 30px;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px 26px;
+      margin-top: 34px;
+      font-weight: 700;
+      font-family: var(--font-head);
+      font-size: .92rem;
+      color: var(--ink);
+    }
+    .hero-points span { display: inline-flex; align-items: center; gap: 7px; }
+    .hero-points .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+
+    /* رسمة الـ Hero */
+    .hero-art { position: relative; }
+    .hero-art .art-frame {
+      position: relative;
+      z-index: 2;
+      animation: floaty 6s ease-in-out infinite;
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    /* فقاعات عضوية خلفية */
+    .blob {
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .blob-1 { top: -60px; left: -70px; width: 240px; color: var(--sky); opacity: .8; animation: blobDrift 12s ease-in-out infinite; }
+    .blob-2 { bottom: -40px; right: -50px; width: 190px; color: var(--lavender); opacity: .6; animation: blobDrift 14s ease-in-out infinite reverse; }
+    .blob-3 { top: 30%; right: 8%; width: 70px; color: var(--yellow); opacity: .9; animation: blobDrift 10s ease-in-out infinite; }
+    @keyframes blobDrift {
+      0%, 100% { transform: translate(0,0) rotate(0deg); }
+      50% { transform: translate(10px, -14px) rotate(6deg); }
+    }
+    @media (min-width: 960px) {
+      .hero-grid { grid-template-columns: 1.05fr .95fr; }
+    }
+
+    /* ============================================================
+       3) من نحن
+       ============================================================ */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      gap: 44px;
+      align-items: start;
+    }
+    .about-card {
+      background: linear-gradient(160deg, #EAF9F9, #F4F0FB);
+      border-radius: 30px;
+      padding: 34px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-card::before {
+      content: "";
+      position: absolute;
+      top: -50px; left: -50px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255, 214, 107, .5);
+    }
+    .about-card .avatar {
+      width: 88px; height: 88px;
+      border-radius: 28px;
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .about-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
+    .about-card .role { color: var(--teal-dark); font-weight: 700; font-family: var(--font-head); font-size: .95rem; margin-bottom: 16px; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+      position: relative;
+    }
+    .about-stats .stat {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 14px 8px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .about-stats .stat b {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      color: var(--teal-dark);
+      font-weight: 900;
+    }
+    .about-stats .stat small { color: var(--gray); font-size: .75rem; line-height: 1.5; display: block; }
+
+    .about-text p { color: var(--gray); margin-bottom: 16px; }
+    .quals { list-style: none; margin-top: 10px; display: grid; gap: 12px; }
+    .quals li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--bg);
+      border: 1.5px solid #E4F3F3;
+      border-radius: 16px;
+      padding: 14px 16px;
+      transition: transform .2s, border-color .2s;
+    }
+    .quals li:hover { transform: translateY(-3px); border-color: var(--sky); }
+    .quals .check {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      margin-top: 3px;
+    }
+    @media (min-width: 960px) {
+      .about-grid { grid-template-columns: .9fr 1.1fr; }
+    }
+
+    /* ============================================================
+       4) الخدمات
+       ============================================================ */
+    .services-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      border: 1.5px solid transparent;
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .service-card::after {
+      content: "";
+      position: absolute;
+      bottom: -46px; left: -46px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--tint, var(--sky));
+      opacity: .28;
+      transition: transform .3s ease;
+    }
+    .service-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-lg); border-color: var(--sky); }
+    .service-card:hover::after { transform: scale(1.5); }
+    .service-icon {
+      width: 60px; height: 60px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      background: var(--tint, var(--sky));
+      color: var(--icon-color, var(--teal-dark));
+      position: relative;
+      z-index: 1;
+    }
+    .service-card h3 { font-size: 1.12rem; font-weight: 800; margin-bottom: 8px; position: relative; z-index: 1; }
+    .service-card p { color: var(--gray); font-size: .95rem; position: relative; z-index: 1; }
+    @media (min-width: 620px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 960px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* ============================================================
+       5) ليه مركز حبيبة؟
+       ============================================================ */
+    .why {
+      background: linear-gradient(180deg, var(--white), #EFF9FB);
+    }
+    .why-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr;
+    }
+    .why-card {
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: transform .25s;
+    }
+    .why-card:hover { transform: translateY(-5px); }
+    .why-card:nth-child(1) { background: #EAF7F7; }
+    .why-card:nth-child(2) { background: #F3EFFA; }
+    .why-card:nth-child(3) { background: var(--yellow-soft); }
+    .why-card:nth-child(4) { background: #EAF4FB; }
+    .why-num {
+      flex-shrink: 0;
+      width: 46px; height: 46px;
+      border-radius: 14px;
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      font-family: var(--font-head);
+      font-weight: 900;
+      color: var(--teal-dark);
+      box-shadow: var(--shadow);
+    }
+    .why-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; }
+    .why-card p { color: var(--gray); font-size: .93rem; }
+    @media (min-width: 720px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ============================================================
+       6) خطوات العمل
+       ============================================================ */
+    .steps-track {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr;
+      counter-reset: step;
+    }
+    .step-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      text-align: center;
+      border-top: 5px solid var(--sky);
+      transition: transform .25s;
+    }
+    .step-card:nth-child(2) { border-top-color: var(--teal); }
+    .step-card:nth-child(3) { border-top-color: var(--lavender); }
+    .step-card:nth-child(4) { border-top-color: var(--yellow); }
+    .step-card:hover { transform: translateY(-6px); }
+    .step-num {
+      width: 52px; height: 52px;
+      margin: -52px auto 14px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 1.15rem;
+      border: 4px solid var(--bg);
+    }
+    .steps-track { margin-top: 40px; }
+    .step-card h3 { font-weight: 800; font-size: 1.08rem; margin-bottom: 6px; }
+    .step-card p { color: var(--gray); font-size: .93rem; }
+    /* سهم بين الخطوات على الشاشات الكبيرة */
+    @media (min-width: 720px) { .steps-track { grid-template-columns: repeat(2, 1fr); gap: 44px 20px; } }
+    @media (min-width: 1020px) { .steps-track { grid-template-columns: repeat(4, 1fr); } }
+
+    /* ============================================================
+       7) المؤهلات والتدريب — Timeline
+       ============================================================ */
+    .timeline-section { background: var(--white); }
+    .timeline {
+      position: relative;
+      max-width: 760px;
+      margin-inline: auto;
+      padding-right: 34px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      right: 10px; top: 6px; bottom: 6px;
+      width: 3px;
+      border-radius: 3px;
+      background: linear-gradient(var(--teal), var(--lavender), var(--yellow));
+    }
+    .tl-item { position: relative; padding-bottom: 34px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: "";
+      position: absolute;
+      right: -31px; top: 8px;
+      width: 17px; height: 17px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 4.5px solid var(--teal);
+    }
+    .tl-item:nth-child(2)::before { border-color: var(--purple); }
+    .tl-item:nth-child(3)::before { border-color: var(--teal-dark); }
+    .tl-item:nth-child(4)::before { border-color: #E0A93E; }
+    .tl-item:nth-child(5)::before { border-color: var(--lavender); }
+    .tl-card {
+      background: var(--bg);
+      border: 1.5px solid #E4F3F3;
+      border-radius: 18px;
+      padding: 20px 22px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .tl-card:hover { transform: translateX(-4px); box-shadow: var(--shadow); }
+    .tl-card .tl-tag {
+      display: inline-block;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: .78rem;
+      color: var(--teal-dark);
+      background: #DFF4F4;
+      padding: 3px 12px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .tl-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; }
+    .tl-card p { color: var(--gray); font-size: .94rem; }
+
+    /* ============================================================
+       8) الأسئلة الشائعة — Accordion
+       ============================================================ */
+    .faq { background: linear-gradient(180deg, #EFF9FB, var(--bg)); }
+    .faq-list {
+      max-width: 780px;
+      margin-inline: auto;
+      display: grid;
+      gap: 14px;
+    }
+    .faq-item {
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1.5px solid transparent;
+      transition: border-color .25s;
+    }
+    .faq-item.open { border-color: var(--sky); }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 20px 22px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink);
+      text-align: right;
+    }
+    .faq-q .chev {
+      flex-shrink: 0;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--bg);
+      display: grid;
+      place-items: center;
+      transition: transform .3s ease, background .3s;
+      color: var(--teal-dark);
+    }
+    .faq-item.open .chev { transform: rotate(180deg); background: var(--teal); color: #fff; }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease;
+    }
+    .faq-a p {
+      padding: 0 22px 22px;
+      color: var(--gray);
+      font-size: .96rem;
+    }
+
+    /* ============================================================
+       9) احجز موعدك — الفورم
+       ============================================================ */
+    .booking { background: var(--white); }
+    .booking-grid {
+      display: grid;
+      gap: 40px;
+      align-items: center;
+    }
+    .booking-info h2 { margin-bottom: 12px; }
+    .booking-info > p { color: var(--gray); margin-bottom: 24px; }
+    .booking-perks { list-style: none; display: grid; gap: 14px; }
+    .booking-perks li { display: flex; gap: 12px; align-items: center; font-weight: 500; }
+    .booking-perks .perk-ic {
+      width: 42px; height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: #EAF7F7;
+      color: var(--teal-dark);
+      flex-shrink: 0;
+    }
+    .booking-form {
+      background: var(--bg);
+      border: 1.5px solid #E4F3F3;
+      border-radius: 26px;
+      padding: 30px 24px;
+      box-shadow: var(--shadow);
+    }
+    .booking-form h3 { font-weight: 800; font-size: 1.2rem; margin-bottom: 4px; }
+    .booking-form .form-sub { color: var(--gray); font-size: .9rem; margin-bottom: 20px; }
+    .form-row { margin-bottom: 16px; }
+    .form-row label {
+      display: block;
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: .88rem;
+      margin-bottom: 6px;
+    }
+    .form-row label .req { color: #D9534F; }
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: .98rem;
+      color: var(--ink);
+      background: var(--white);
+      border: 1.5px solid #DCEEEE;
+      border-radius: 13px;
+      padding: 12px 14px;
+      transition: border-color .2s, box-shadow .2s;
+      appearance: none;
+    }
+    .form-row textarea { resize: vertical; min-height: 96px; }
+    .form-row select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230E7A76' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: left 14px center;
+    }
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(23, 166, 161, .14);
+    }
+    .booking-form .btn { width: 100%; font-size: 1.05rem; padding: 14px; }
+    .form-note {
+      text-align: center;
+      color: var(--gray);
+      font-size: .82rem;
+      margin-top: 12px;
+    }
+    @media (min-width: 960px) { .booking-grid { grid-template-columns: 1fr 1.05fr; } }
+
+    /* ============================================================
+       10) تواصل معنا
+       ============================================================ */
+    .contact-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr;
+    }
+    .contact-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      transition: transform .25s;
+    }
+    .contact-card:hover { transform: translateY(-4px); }
+    .contact-ic {
+      flex-shrink: 0;
+      width: 54px; height: 54px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+    }
+    .contact-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 2px; }
+    .contact-card p, .contact-card a.val { color: var(--gray); font-size: .95rem; }
+    /* القيم اللاتينية (أرقام/إيميل) تُعرض LTR حتى لا تنقلب داخل النص العربي */
+    .contact-card .val { display: inline-block; direction: ltr; text-align: right; }
+    .contact-card a.val:hover { color: var(--teal-dark); }
+    .contact-card p.ar { direction: rtl; }
+
+    /* بطاقة العنوان / الخريطة التوضيحية */
+    .map-card {
+      margin-top: 20px;
+      background: linear-gradient(140deg, #EAF7F7, #F3EFFA);
+      border-radius: 26px;
+      padding: 34px 26px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-card .pin-wrap {
+      width: 84px; height: 84px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow);
+      color: var(--teal-dark);
+      animation: floaty 5s ease-in-out infinite;
+    }
+    .map-card h3 { font-weight: 800; font-size: 1.15rem; margin-bottom: 6px; }
+    .map-card p { color: var(--gray); margin-bottom: 18px; }
+    @media (min-width: 720px) { .contact-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* ============================================================
+       11) Footer
+       ============================================================ */
+    footer {
+      background: var(--ink);
+      color: #D9EAE9;
+      padding: 56px 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: "";
+      position: absolute;
+      top: -120px; left: -80px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(23, 166, 161, .18);
+    }
+    .footer-grid {
+      display: grid;
+      gap: 34px;
+      grid-template-columns: 1fr;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    .footer-brand .logo { color: #fff; margin-bottom: 14px; }
+    .footer-brand p { color: #A9C6C4; font-size: .95rem; max-width: 320px; }
+    .footer-col h4 {
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 16px;
+      font-size: 1.02rem;
+    }
+    .footer-col ul { list-style: none; display: grid; gap: 10px; }
+    .footer-col a { color: #A9C6C4; transition: color .2s; font-size: .95rem; }
+    .footer-col a:hover { color: var(--yellow); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      padding: 18px 0;
+      text-align: center;
+      font-size: .88rem;
+      color: #8FB3B1;
+      position: relative;
+    }
+    @media (min-width: 800px) { .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+
+    /* ============================================================
+       زر واتساب العائم
+       ============================================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 22px;
+      left: 22px;
+      z-index: 90;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #22c15e;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 26px rgba(34, 193, 94, .45);
+      transition: transform .2s ease;
+    }
+    .whatsapp-float:hover { transform: scale(1.1) translateY(-3px); }
+    .whatsapp-float::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(34, 193, 94, .5);
+      animation: pulse 2.2s ease-out infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(.9); opacity: 1; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+
+    /* مسافة أقسام أقل على الموبايل */
+    @media (max-width: 640px) {
+      section { padding: 56px 0; }
+      .hero { padding-top: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== 1) شريط التنقل ==================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo" aria-label="مركز حبيبة">
+        <span class="logo-mark" aria-hidden="true">
+          <!-- أيقونة فقاعة كلام -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            <path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/>
+          </svg>
+        </span>
+        مركز حبيبة
+      </a>
+
+      <nav aria-label="التنقل الرئيسي">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="active">الرئيسية</a></li>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#services">خدماتنا</a></li>
+          <li><a href="#steps">خطوات العمل</a></li>
+          <li><a href="#faq">الأسئلة الشائعة</a></li>
+          <li><a href="#contact">تواصل معنا</a></li>
+        </ul>
+      </nav>
+
+      <a href="#booking" class="btn btn-primary nav-cta">احجز الآن</a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="فتح القائمة" aria-expanded="false">
+        <span></span>
+      </button>
+    </div>
+
+    <!-- قائمة الموبايل -->
+    <ul class="mobile-menu" id="mobileMenu">
+      <li><a href="#home">الرئيسية</a></li>
+      <li><a href="#about">من نحن</a></li>
+      <li><a href="#services">خدماتنا</a></li>
+      <li><a href="#steps">خطوات العمل</a></li>
+      <li><a href="#faq">الأسئلة الشائعة</a></li>
+      <li><a href="#contact">تواصل معنا</a></li>
+      <li><a href="#booking" class="btn btn-primary">احجز الآن</a></li>
+    </ul>
+  </header>
+
+  <!-- ==================== 2) Hero ==================== -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="badge hero-badge reveal">مركز تخاطب وتعديل سلوك – منيا القمح، الشرقية</span>
+        <h1 class="reveal" style="--d:.08s">
+          نبني
+          <span class="scribble">صوت طفلك
+            <!-- خط يدوي تحت الكلمة -->
+            <svg viewBox="0 0 220 22" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M4 14 C 40 6, 80 20, 118 12 S 190 6, 216 12" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+            </svg>
+          </span>
+          خطوة بخطوة
+        </h1>
+        <p class="lead reveal" style="--d:.16s">
+          جلسات تخاطب وتحليل سلوك تطبيقي (ABA) وتربية خاصة في بيئة آمنة ومحببة لطفلك،
+          بخطة علاجية مخصصة لكل حالة ومتابعة مستمرة مع ولي الأمر.
+        </p>
+        <div class="hero-actions reveal" style="--d:.24s">
+          <a href="#booking" class="btn btn-primary">
+            احجز جلسة
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          </a>
+          <a class="btn btn-whatsapp" href="https://wa.me/201015858817?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AC%D9%84%D8%B3%D8%A7%D8%AA%20%D9%85%D8%B1%D9%83%D8%B2%20%D8%AD%D8%A8%D9%8A%D8%A8%D8%A9" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.27z"/></svg>
+            كلمنا واتساب
+          </a>
+        </div>
+        <div class="hero-points reveal" style="--d:.32s">
+          <span><i class="dot" style="background:var(--teal)"></i> جلسات فردية</span>
+          <span><i class="dot" style="background:var(--purple)"></i> خطة لكل حالة</span>
+          <span><i class="dot" style="background:var(--yellow)"></i> متابعة مع الأهل</span>
+        </div>
+      </div>
+
+      <!-- رسمة SVG: طفل وفقاعات كلام -->
+      <div class="hero-art reveal" style="--d:.2s">
+        <svg class="blob blob-1" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
+          <path d="M43.9,-70.6C56.5,-63.5,66.3,-51.4,73.4,-37.6C80.5,-23.8,84.9,-8.2,82.3,6.3C79.7,20.8,70.1,34.1,59.4,45.1C48.7,56.1,36.9,64.8,22.9,70.4C8.9,76,-7.3,78.5,-22.4,74.3C-37.5,70.1,-51.5,59.2,-61.4,45.6C-71.3,32,-77.1,15.7,-76.6,-0.2C-76.1,-16.1,-69.3,-31.6,-58.8,-43.4C-48.3,-55.2,-34.1,-63.3,-19.4,-68.5C-4.7,-73.7,10.6,-76,25.1,-74.4C39.6,-72.8,31.3,-77.7,43.9,-70.6Z" transform="translate(100 100)"/>
+        </svg>
+        <svg class="blob blob-2" viewBox="0 0 200 200" fill="currentColor" aria-hidden="true">
+          <path d="M47.7,-69.9C61.4,-62.3,71.6,-47.8,76.3,-32.1C81,-16.4,80.2,0.4,75.6,15.1C71,29.8,62.6,42.4,51.1,52.4C39.6,62.4,25,69.8,8.9,73.6C-7.2,77.4,-24.8,77.6,-38.9,70.4C-53,63.2,-63.6,48.6,-70.4,32.6C-77.2,16.6,-80.2,-0.8,-75.9,-15.8C-71.6,-30.8,-60,-43.4,-46.5,-50.9C-33,-58.4,-16.5,-60.8,-0.3,-60.4C15.9,-60,34,-77.5,47.7,-69.9Z" transform="translate(100 100)"/>
+        </svg>
+        <svg class="blob blob-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2l2.4 6.2L21 9.3l-5 4.4 1.5 6.8L12 16.9 6.5 20.5 8 13.7 3 9.3l6.6-1.1z"/>
+        </svg>
+
+        <div class="art-frame">
+          <svg viewBox="0 0 420 380" fill="none" role="img" aria-label="رسم توضيحي لطفل يتكلم">
+            <!-- خلفية دائرية -->
+            <circle cx="210" cy="195" r="160" fill="#DFF3F4"/>
+            <circle cx="210" cy="195" r="160" stroke="#BBE9F2" stroke-width="3" stroke-dasharray="4 14" stroke-linecap="round" fill="none"/>
+            <!-- نجوم -->
+            <path d="M88 84l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#FFD66B"/>
+            <path d="M330 250l3 8 8 3-8 3-3 8-3-8-8-3 8-3z" fill="#BAAAD7"/>
+            <!-- فقاعة كلام كبيرة -->
+            <g>
+              <rect x="232" y="52" width="150" height="86" rx="26" fill="#fff" stroke="#17A6A1" stroke-width="3.5"/>
+              <path d="M268 136l-14 26 32-20z" fill="#fff" stroke="#17A6A1" stroke-width="3.5" stroke-linejoin="round"/>
+              <!-- موجات صوت -->
+              <rect x="254" y="86" width="10" height="20" rx="5" fill="#17A6A1"/>
+              <rect x="272" y="76" width="10" height="40" rx="5" fill="#FFD66B"/>
+              <rect x="290" y="82" width="10" height="28" rx="5" fill="#BAAAD7"/>
+              <rect x="308" y="72" width="10" height="48" rx="5" fill="#17A6A1"/>
+              <rect x="326" y="84" width="10" height="24" rx="5" fill="#FFD66B"/>
+              <rect x="344" y="90" width="10" height="16" rx="5" fill="#BAAAD7"/>
+            </g>
+            <!-- فقاعة صغيرة -->
+            <circle cx="206" cy="180" r="9" fill="#FFD66B"/>
+            <circle cx="180" cy="204" r="6" fill="#BAAAD7"/>
+            <!-- الطفل -->
+            <g>
+              <!-- جسم -->
+              <path d="M150 340c0-52 26-82 62-82s62 30 62 82z" fill="#17A6A1"/>
+              <path d="M150 340c0-52 26-82 62-82s62 30 62 82z" stroke="#0E7A76" stroke-width="3"/>
+              <!-- ياقة -->
+              <path d="M196 262c6 8 26 8 32 0l-6 20h-20z" fill="#fff"/>
+              <!-- رقبة -->
+              <rect x="198" y="228" width="28" height="26" rx="10" fill="#F5C89A"/>
+              <!-- رأس -->
+              <circle cx="212" cy="192" r="46" fill="#F8D4A8"/>
+              <!-- شعر -->
+              <path d="M166 186c-4-32 18-56 46-56s50 24 46 56c-6-16-14-24-20-24 2 8-2 12-6 12 2-10-6-18-20-18s-28 8-32 20c-6 0-11 4-14 10z" fill="#5A4033"/>
+              <!-- ودن -->
+              <circle cx="166" cy="196" r="8" fill="#F8D4A8"/>
+              <circle cx="258" cy="196" r="8" fill="#F8D4A8"/>
+              <!-- عيون -->
+              <circle cx="194" cy="192" r="5.5" fill="#3A2E28"/>
+              <circle cx="230" cy="192" r="5.5" fill="#3A2E28"/>
+              <circle cx="196" cy="190" r="1.8" fill="#fff"/>
+              <circle cx="232" cy="190" r="1.8" fill="#fff"/>
+              <!-- حواجب -->
+              <path d="M186 178c4-4 12-4 16-1" stroke="#5A4033" stroke-width="3" stroke-linecap="round"/>
+              <path d="M222 177c4-3 12-3 16 1" stroke="#5A4033" stroke-width="3" stroke-linecap="round"/>
+              <!-- خدود -->
+              <circle cx="182" cy="208" r="7" fill="#F2A48C" opacity=".65"/>
+              <circle cx="242" cy="208" r="7" fill="#F2A48C" opacity=".65"/>
+              <!-- بسمة -->
+              <path d="M198 214c6 7 22 7 28 0" stroke="#3A2E28" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <!-- نجمة على التيشيرت -->
+              <path d="M212 296l4.5 9.5 10.5 1.5-7.5 7.5 2 10.5-9.5-5-9.5 5 2-10.5-7.5-7.5 10.5-1.5z" fill="#FFD66B"/>
+            </g>
+            <!-- أرضية -->
+            <ellipse cx="212" cy="346" rx="120" ry="12" fill="#C8ECEC"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3) من نحن ==================== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-tag">من نحن</span>
+        <h2 class="section-title">أهلاً بيكم في مركز حبيبة</h2>
+      </div>
+
+      <div class="about-grid">
+        <!-- كارت الأخصائية -->
+        <div class="about-card reveal" style="--d:.05s">
+          <div class="avatar" aria-hidden="true">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0E7A76" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4.2"/>
+              <path d="M4.5 20.5c1.4-3.6 4.2-5.5 7.5-5.5s6.1 1.9 7.5 5.5"/>
+              <path d="M18.5 3.5l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6z" fill="#FFD66B" stroke="none"/>
+            </svg>
+          </div>
+          <h3>أ/ حبيبة محمد عادل</h3>
+          <p class="role">أخصائية تربية خاصة وتخاطب وتحليل سلوك تطبيقي (ABA)</p>
+          <p style="color:var(--gray); font-size:.95rem; position:relative;">
+            صاحبة مركز حبيبة للتخاطب وتعديل السلوك بمنيا القمح – محافظة الشرقية،
+            متخصصة في جلسات التخاطب وتعديل السلوك وتنمية مهارات الأطفال.
+          </p>
+          <div class="about-stats">
+            <div class="stat"><b>ABA</b><small>كورس من البورد الأمريكي</small></div>
+            <div class="stat"><b>3+</b><small>أماكن تدريب عملي</small></div>
+            <div class="stat"><b>امتياز</b><small>التقدير التراكمي</small></div>
+          </div>
+        </div>
+
+        <!-- النبذة والمؤهلات -->
+        <div class="about-text">
+          <p class="reveal" style="--d:.1s">
+            مركز حبيبة هو مساحة دافئة وآمنة هدفها مساعدة طفلك على الكلام والتواصل وتعديل السلوك
+            بأساليب علمية مجرّبة. بنشتغل مع كل طفل كحالة مستقلة ليها خطة علاجية خاصة بيها،
+            وبنؤمن إن دور ولي الأمر جزء أساسي من نجاح الخطة، عشان كده المتابعة معاكم مستمرة خطوة بخطوة.
+          </p>
+          <ul class="quals">
+            <li class="reveal" style="--d:.14s">
+              <span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span>طالبة بالفرقة الرابعة بكلية التربية الخاصة – جامعة الأزهر فرع أسيوط (شعبة العلوم)، تخرج متوقع 2027 بتقدير امتياز.</span>
+            </li>
+            <li class="reveal" style="--d:.2s">
+              <span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span>من أوائل الدفعة: السادسة على الشعبة في الفرقة الأولى، الثانية على الشعبة في الفرقة الثانية، والسادسة على الدفعة في الفرقة الثالثة.</span>
+            </li>
+            <li class="reveal" style="--d:.26s">
+              <span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span>حاصلة على كورس تحليل السلوك التطبيقي ABA من البورد الأمريكي.</span>
+            </li>
+            <li class="reveal" style="--d:.32s">
+              <span class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+              <span>خبرة عملية في إدارة مركز، وجلسات خاصة فردية، وكورسات تخاطب أونلاين.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4) الخدمات ==================== -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="section-tag">خدماتنا</span>
+        <h2 class="section-title">إيه اللي بنقدمه لطفلك؟</h2>
+        <p class="section-sub">خدمات متكاملة في التخاطب وتعديل السلوك وتنمية المهارات، مصممة لاحتياجات كل طفل.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- 1) جلسات تخاطب -->
+        <article class="service-card reveal" style="--d:.02s; --tint:#DFF3F4; --icon-color:#0E7A76;">
+          <div class="service-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              <path d="M8 11h.01M12 11h.01M16 11h.01"/>
+            </svg>
+          </div>
+          <h3>جلسات تخاطب</h3>
+          <p>علاج تأخر النطق واللغة واضطرابات النطق عند الأطفال بجلسات فردية ممتعة ومنظمة.</p>
+        </article>
+
+        <!-- 2) ABA -->
+        <article class="service-card reveal" style="--d:.08s; --tint:#EFE9F8; --icon-color:#6B5AA8;">
+          <div class="service-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 1 4 4v.3a4.5 4.5 0 0 1 3 4.2 4.5 4.5 0 0 1-1.5 3.4A4.5 4.5 0 0 1 15 20.5h-.5A2.5 2.5 0 0 1 12 22a2.5 2.5 0 0 1-2.5-1.5H9A4.5 4.5 0 0 1 6.5 14 4.5 4.5 0 0 1 5 10.5a4.5 4.5 0 0 1 3-4.2V6a4 4 0 0 1 4-4z"/>
+              <path d="M12 6v16"/>
+            </svg>
+          </div>
+          <h3>تحليل السلوك التطبيقي ABA</h3>
+          <p>برامج علمية لتعديل السلوك وتعزيز السلوكيات الإيجابية وتقليل السلوكيات غير المرغوبة.</p>
+        </article>
+
+        <!-- 3) تربية خاصة فردية -->
+        <article class="service-card reveal" style="--d:.14s; --tint:#FFF3D6; --icon-color:#B8860B;">
+          <div class="service-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="7" r="3.4"/>
+              <path d="M5.5 21c1-3.8 3.6-5.8 6.5-5.8s5.5 2 6.5 5.8"/>
+              <path d="m19 3 .9 2.1L22 6l-2.1.9L19 9l-.9-2.1L16 6l2.1-.9z"/>
+            </svg>
+          </div>
+          <h3>جلسات تربية خاصة فردية</h3>
+          <p>جلسات واحد لواحد تركز على احتياجات طفلك الخاصة بعيداً عن أي تشتيت.</p>
+        </article>
+
+        <!-- 4) تنمية مهارات -->
+        <article class="service-card reveal" style="--d:.2s; --tint:#E4F0FB; --icon-color:#2E6FA3;">
+          <div class="service-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2 9.5 8.5 2 9.3l5.5 4.8L5.8 21 12 17.3 18.2 21l-1.7-6.9L22 9.3l-7.5-.8z"/>
+            </svg>
+          </div>
+          <h3>تنمية المهارات والدعم التعليمي</h3>
+          <p>تطوير المهارات المعرفية والاجتماعية والاستعداد الأكاديمي بطريقة تناسب كل طفل.</p>
+        </article>
+
+        <!-- 5) ملاحظة وتقييم -->
+        <article class="service-card reveal" style="--d:.26s; --tint:#DFF3F4; --icon-color:#0E7A76;">
+          <div class="service-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="5" y="3" width="14" height="18" rx="3"/>
+              <path d="M9 3.5h6"/>
+              <path d="m8.5 12 2.3 2.3L15.5 9.6"/>
+              <path d="M8.5 17.5h7"/>
+            </svg>
+          </div>
+          <h3>ملاحظة الحالات وتقييمها</h3>
+          <p>تقييم دقيق لنقاط القوة والضعف عند الطفل قبل بداية أي خطة علاجية.</p>
+        </article>
+
+        <!-- 6) كورسات أونلاين -->
+        <article class="service-card reveal" style="--d:.32s; --tint:#EFE9F8; --icon-color:#6B5AA8;">
+          <div class="service-icon">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="12" rx="2.5"/>
+              <path d="M8 20h8"/>
+              <path d="M12 16v4"/>
+              <path d="m10 8 4 2.5-4 2.5z" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>كورسات تخاطب أونلاين</h3>
+          <p>كورسات تخاطب عن بُعد للأهالي والمهتمين، من أي مكان وفي الوقت المناسب ليك.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5) ليه مركز حبيبة؟ ==================== -->
+  <section class="why" id="why">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="section-tag">مميزاتنا</span>
+        <h2 class="section-title">ليه تختار مركز حبيبة؟</h2>
+        <p class="section-sub">لأن طفلك يستحق رعاية مبنية على العلم والاهتمام الحقيقي بكل تفصيلة.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card reveal" style="--d:.02s">
+          <span class="why-num">1</span>
+          <div>
+            <h3>جلسات فردية 100%</h3>
+            <p>كل جلسة مخصصة بالكامل لطفلك بس، عشان ياخد أقصى استفادة من كل دقيقة.</p>
+          </div>
+        </div>
+        <div class="why-card reveal" style="--d:.08s">
+          <span class="why-num">2</span>
+          <div>
+            <h3>خطة علاجية لكل حالة</h3>
+            <p>مفيش خطة واحدة تناسب الجميع — بنصمم برنامج علاجي مبني على تقييم طفلك.</p>
+          </div>
+        </div>
+        <div class="why-card reveal" style="--d:.14s">
+          <span class="why-num">3</span>
+          <div>
+            <h3>متابعة مستمرة مع ولي الأمر</h3>
+            <p>بنشاركك تطور طفلك أول بأول ونعرفك إزاي تدعمه في البيت بين الجلسات.</p>
+          </div>
+        </div>
+        <div class="why-card reveal" style="--d:.2s">
+          <span class="why-num">4</span>
+          <div>
+            <h3>أخصائية مؤهلة</h3>
+            <p>بإشراف أ/ حبيبة محمد عادل، المتخصصة في التربية الخاصة والتخاطب وتحليل السلوك التطبيقي.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6) خطوات العمل ==================== -->
+  <section id="steps">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="section-tag">رحلة العلاج</span>
+        <h2 class="section-title">بنشتغل إزاي؟</h2>
+        <p class="section-sub">أربع خطوات واضحة من أول زيارة لحد ما نشوف تقدم طفلك.</p>
+      </div>
+
+      <div class="steps-track">
+        <div class="step-card reveal" style="--d:.02s">
+          <span class="step-num">1</span>
+          <h3>التقييم والملاحظة</h3>
+          <p>جلسة أولى للتعرف على طفلك وتقييم نقاط القوة والاحتياجات بدقة.</p>
+        </div>
+        <div class="step-card reveal" style="--d:.08s">
+          <span class="step-num">2</span>
+          <h3>خطة علاجية مخصصة</h3>
+          <p>نصمم برنامج علاجي بأهداف واضحة مناسبة لحالة طفلك وقدراته.</p>
+        </div>
+        <div class="step-card reveal" style="--d:.14s">
+          <span class="step-num">3</span>
+          <h3>جلسات منتظمة</h3>
+          <p>جلسات فردية ممتعة ومنظمة بنشتغل فيها على أهداف الخطة خطوة بخطوة.</p>
+        </div>
+        <div class="step-card reveal" style="--d:.2s">
+          <span class="step-num">4</span>
+          <h3>متابعة وتقييم مستمر</h3>
+          <p>نقيس التقدم بشكل دوري ونعدل الخطة حسب تطور طفلك، مع متابعة دائمة معاك.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7) المؤهلات والتدريب — Timeline ==================== -->
+  <section class="timeline-section" id="qualifications">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="section-tag">الخبرة والمؤهلات</span>
+        <h2 class="section-title">المؤهلات والتدريب العملي</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item reveal" style="--d:.02s">
+          <div class="tl-card">
+            <span class="tl-tag">الدراسة الأكاديمية</span>
+            <h3>كلية التربية الخاصة – جامعة الأزهر (فرع أسيوط)</h3>
+            <p>طالبة بالفرقة الرابعة، شعبة العلوم — تخرج متوقع 2027 بتقدير امتياز.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal" style="--d:.08s">
+          <div class="tl-card">
+            <span class="tl-tag">التفوق الدراسي</span>
+            <h3>من أوائل الدفعة</h3>
+            <p>السادسة على الشعبة في الفرقة الأولى — الثانية على الشعبة في الفرقة الثانية — السادسة على الدفعة في الفرقة الثالثة.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal" style="--d:.14s">
+          <div class="tl-card">
+            <span class="tl-tag">شهادة معتمدة</span>
+            <h3>كورس تحليل السلوك التطبيقي ABA</h3>
+            <p>حاصلة على كورس ABA من البورد الأمريكي.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal" style="--d:.2s">
+          <div class="tl-card">
+            <span class="tl-tag">تدريب عملي</span>
+            <h3>تدريب ميداني في 3 جهات</h3>
+            <p>مستشفى منيا القمح المركزي الحكومي — مركز سيفن سكيلز — مركز ألفا.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal" style="--d:.26s">
+          <div class="tl-card">
+            <span class="tl-tag">خبرة عملية</span>
+            <h3>إدارة وجلسات وتدريب أونلاين</h3>
+            <p>خبرة في إدارة مركز (3 شهور)، وجلسات خاصة فردية، وتقديم كورسات تخاطب أونلاين.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 8) الأسئلة الشائعة ==================== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="section-tag">الأسئلة الشائعة</span>
+        <h2 class="section-title">عندك سؤال؟ عندنا الإجابة</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item reveal" style="--d:.02s">
+          <button class="faq-q" aria-expanded="false">
+            متى أشك إن طفلي عنده تأخر في النطق؟
+            <span class="chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a">
+            <p>لو طفلك بيتكلم كلمات أقل بكتير من أقرانه في نفس العمر، أو بيعتمد على الإشارة أكتر من الكلام، أو مش بيرد على اسمه أو التعليمات البسيطة — يُفضل تعمل تقييم مبكر. التدخل المبكر بيفرق جداً في النتائج، وممكن تبدأ بجلسة تقييم وملاحظة في المركز.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" style="--d:.06s">
+          <button class="faq-q" aria-expanded="false">
+            إيه هو تحليل السلوك التطبيقي (ABA)؟
+            <span class="chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a">
+            <p>ABA هو منهج علمي معتمد عالمياً لتعديل السلوك، بيشتغل على تعزيز السلوكيات الإيجابية وتقليل السلوكيات غير المرغوبة من خلال التعزيز والتكرار المنظم، وبيُستخدم بشكل واسع مع أطفال التوحد واضطرابات النمو.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" style="--d:.1s">
+          <button class="faq-q" aria-expanded="false">
+            عدد الجلسات ومدتها بيكون قد إيه؟
+            <span class="chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a">
+            <p>ده بيتحدد بعد جلسة التقييم حسب حالة كل طفل واحتياجاته. الخطة العلاجية بتوضح عدد الجلسات الأسبوعية والأهداف المطلوبة، وبيتم مراجعتها بشكل دوري مع تقدم الطفل.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" style="--d:.14s">
+          <button class="faq-q" aria-expanded="false">
+            هل في متابعة مع ولي الأمر بعد الجلسات؟
+            <span class="chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a">
+            <p>أيوه، المتابعة مع ولي الأمر جزء أساسي من الخطة. بنشاركك تطور طفلك بشكل مستمر، وبنعرفك إزاي تطبق تدريبات بسيطة في البيت تدعم اللي بياخده في الجلسة.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" style="--d:.18s">
+          <button class="faq-q" aria-expanded="false">
+            الكورسات الأونلاين متاحة لمين؟
+            <span class="chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a">
+            <p>كورسات التخاطب الأونلاين متاحة للأهالي والمهتمين بمجال التخاطب من أي مكان. للتفاصيل عن الكورسات المتاحة حالياً ومواعيدها، كلمنا على واتساب 01015858817.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal" style="--d:.22s">
+          <button class="faq-q" aria-expanded="false">
+            إزاي أحجز أول جلسة تقييم؟
+            <span class="chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <div class="faq-a">
+            <p>أسهل طريقة: املأ فورم الحجز الموجود في الموقع وهيتبعت طلبك لنا على واتساب مباشرة، أو كلمنا على الرقم 01015858817 وهنحدد معاك معاد مناسب لجلسة التقييم الأولى.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 9) احجز موعدك ==================== -->
+  <section class="booking" id="booking">
+    <div class="container booking-grid">
+      <div class="booking-info reveal">
+        <span class="section-tag">احجز موعدك</span>
+        <h2 class="section-title">جاهز تبدأ رحلة طفلك معانا؟</h2>
+        <p>املأ البيانات التالية وهيوصلنا طلبك على واتساب مباشرة، وهنرد عليك في أقرب وقت لتحديد الموعد المناسب.</p>
+        <ul class="booking-perks">
+          <li>
+            <span class="perk-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span>
+            رد سريع وتأكيد الموعد على واتساب
+          </li>
+          <li>
+            <span class="perk-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11.5 11 14l4.5-5"/><circle cx="12" cy="12" r="9.2"/></svg></span>
+            أول خطوة: جلسة تقييم وملاحظة للحالة
+          </li>
+          <li>
+            <span class="perk-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6a5.4 5.4 0 0 0-9.6-3.4L12 6.4l.8-1.2A5.4 5.4 0 0 0 3.2 8.6c0 4 4.8 7.4 8.8 10.4 4-3 8.8-6.4 8.8-10.4z"/></svg></span>
+            بياناتك في أمان وتُستخدم للتواصل بس
+          </li>
+        </ul>
+      </div>
+
+      <form class="booking-form reveal" style="--d:.1s" id="bookingForm" novalidate>
+        <h3>فورم الحجز</h3>
+        <p class="form-sub">هيتم فتح واتساب برسالة جاهزة فيها بياناتك — دوس إرسال وبس.</p>
+
+        <div class="form-row">
+          <label for="parentName">اسم ولي الأمر <span class="req">*</span></label>
+          <input type="text" id="parentName" name="parentName" placeholder="مثال: أحمد محمد" required />
+        </div>
+
+        <div class="form-row">
+          <label for="phone">رقم الموبايل <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" inputmode="tel" placeholder="01xxxxxxxxx" required />
+        </div>
+
+        <div class="form-row">
+          <label for="childAge">عمر الطفل <span class="req">*</span></label>
+          <input type="text" id="childAge" name="childAge" inputmode="numeric" placeholder="مثال: 4 سنوات" required />
+        </div>
+
+        <div class="form-row">
+          <label for="service">الخدمة المطلوبة <span class="req">*</span></label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>اختار الخدمة</option>
+            <option>جلسات تخاطب (تأخر النطق واللغة)</option>
+            <option>تحليل السلوك التطبيقي ABA</option>
+            <option>جلسات تربية خاصة فردية</option>
+            <option>تنمية المهارات والدعم التعليمي</option>
+            <option>ملاحظة الحالات وتقييمها</option>
+            <option>كورسات تخاطب أونلاين</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="message">رسالتك (اختياري)</label>
+          <textarea id="message" name="message" placeholder="احكيلنا باختصار عن حالة طفلك أو أي سؤال عندك..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-whatsapp">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.27z"/></svg>
+          إرسال الطلب عبر واتساب
+        </button>
+        <p class="form-note">بالضغط على إرسال، هيُفتح تطبيق واتساب برسالة جاهزة على رقم المركز.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================== 10) تواصل معنا ==================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="section-tag">تواصل معنا</span>
+        <h2 class="section-title">احنا هنا عشانك</h2>
+        <p class="section-sub">كلمنا في أي وقت أو شرفنا في المركز — هنكون سعيدين باستقبالك وطفلك.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- موبايل / واتساب -->
+        <a class="contact-card reveal" style="--d:.02s" href="tel:+201015858817">
+          <span class="contact-ic" style="background:#E4F8ED; color:#178A44;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 2z"/></svg>
+          </span>
+          <div>
+            <h3>موبايل / واتساب</h3>
+            <span class="val">0101 585 8817</span>
+          </div>
+        </a>
+
+        <!-- الإيميل -->
+        <a class="contact-card reveal" style="--d:.08s" href="mailto:hm9966041@gmail.com">
+          <span class="contact-ic" style="background:#EFE9F8; color:#6B5AA8;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="3"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+          </span>
+          <div>
+            <h3>البريد الإلكتروني</h3>
+            <span class="val">hm9966041@gmail.com</span>
+          </div>
+        </a>
+
+        <!-- العنوان -->
+        <div class="contact-card reveal" style="--d:.14s">
+          <span class="contact-ic" style="background:#FFF3D6; color:#B8860B;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div>
+            <h3>العنوان</h3>
+            <p class="ar">منيا القمح – محافظة الشرقية، مصر</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- بطاقة العنوان الموسعة -->
+      <div class="map-card reveal" style="--d:.2s">
+        <div class="pin-wrap" aria-hidden="true">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>مركز حبيبة للتخاطب وتعديل السلوك</h3>
+        <p>منيا القمح – محافظة الشرقية – جمهورية مصر العربية</p>
+        <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=%D9%85%D9%86%D9%8A%D8%A7+%D8%A7%D9%84%D9%82%D9%85%D8%AD%D8%8C+%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9" target="_blank" rel="noopener">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20 3 17V4l6 3M9 20l6-3M9 20V7m6 10 6 3V7l-6-3m0 13V4M9 7 15 4"/></svg>
+          افتح الموقع على خرائط جوجل
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 11) Footer ==================== -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01"/></svg>
+          </span>
+          مركز حبيبة
+        </a>
+        <p>مركز متخصص في التخاطب وتعديل السلوك والتربية الخاصة للأطفال، بإشراف أ/ حبيبة محمد عادل — منيا القمح، الشرقية.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#about">من نحن</a></li>
+          <li><a href="#services">خدماتنا</a></li>
+          <li><a href="#steps">خطوات العمل</a></li>
+          <li><a href="#faq">الأسئلة الشائعة</a></li>
+          <li><a href="#booking">احجز موعدك</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>تواصل معنا</h4>
+        <ul>
+          <li><a href="tel:+201015858817">موبايل: 01015858817</a></li>
+          <li><a href="https://wa.me/201015858817" target="_blank" rel="noopener">واتساب: 01015858817</a></li>
+          <li><a href="mailto:hm9966041@gmail.com">hm9966041@gmail.com</a></li>
+          <li><a href="#contact">منيا القمح – الشرقية – مصر</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">مركز حبيبة للتخاطب وتعديل السلوك © <span id="year"></span> — جميع الحقوق محفوظة</div>
+    </div>
+  </footer>
+
+  <!-- زر واتساب العائم -->
+  <a class="whatsapp-float" href="https://wa.me/201015858817?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AC%D9%84%D8%B3%D8%A7%D8%AA%20%D9%85%D8%B1%D9%83%D8%B2%20%D8%AD%D8%A8%D9%8A%D8%A8%D8%A9" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.83 9.83 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.23 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.27z"/></svg>
+  </a>
+
+  <script>
+    /* ============================================================
+       مركز حبيبة — سكريبت التفاعلات
+       ============================================================ */
+    (function () {
+      'use strict';
+
+      /* ---------- سنة الفوتر تلقائياً ---------- */
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      /* ---------- ظل النافبار عند السكرول ---------- */
+      var navbar = document.getElementById('navbar');
+      var onScrollNav = function () {
+        navbar.classList.toggle('scrolled', window.scrollY > 12);
+      };
+      window.addEventListener('scroll', onScrollNav, { passive: true });
+      onScrollNav();
+
+      /* ---------- قائمة الموبايل ---------- */
+      var toggle = document.getElementById('navToggle');
+      var mobileMenu = document.getElementById('mobileMenu');
+
+      toggle.addEventListener('click', function () {
+        var isOpen = mobileMenu.classList.toggle('show');
+        toggle.classList.toggle('open', isOpen);
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      // قفل القائمة عند اختيار أي رابط
+      mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          mobileMenu.classList.remove('show');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      /* ---------- أنيميشن الظهور عند السكرول (IntersectionObserver) ---------- */
+      var revealEls = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealEls.forEach(function (el) { revealObserver.observe(el); });
+      } else {
+        // متصفحات قديمة: أظهر كل حاجة مباشرة
+        revealEls.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      /* ---------- تفعيل رابط القسم الحالي في النافبار ---------- */
+      var sections = ['home', 'about', 'services', 'steps', 'faq', 'contact'];
+      var navAnchors = document.querySelectorAll('.nav-links a');
+
+      var spyObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            navAnchors.forEach(function (a) {
+              a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+            });
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+
+      sections.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) spyObserver.observe(el);
+      });
+
+      /* ---------- أكورديون الأسئلة الشائعة ---------- */
+      document.querySelectorAll('.faq-item').forEach(function (item) {
+        var btn = item.querySelector('.faq-q');
+        var answer = item.querySelector('.faq-a');
+
+        btn.addEventListener('click', function () {
+          var isOpen = item.classList.contains('open');
+
+          // اقفل كل الأسئلة الأول (سؤال واحد مفتوح في نفس الوقت)
+          document.querySelectorAll('.faq-item.open').forEach(function (other) {
+            other.classList.remove('open');
+            other.querySelector('.faq-a').style.maxHeight = null;
+            other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+          });
+
+          // افتح السؤال المطلوب لو كان مقفول
+          if (!isOpen) {
+            item.classList.add('open');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            btn.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      /* ---------- فورم الحجز → رسالة واتساب جاهزة ---------- */
+      var form = document.getElementById('bookingForm');
+      var WHATSAPP_NUMBER = '201015858817'; // رقم المركز بالصيغة الدولية
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var parentName = form.parentName.value.trim();
+        var phone      = form.phone.value.trim();
+        var childAge   = form.childAge.value.trim();
+        var service    = form.service.value;
+        var message    = form.message.value.trim();
+
+        // تحقق بسيط من الحقول المطلوبة
+        if (!parentName || !phone || !childAge || !service) {
+          form.reportValidity();
+          return;
+        }
+
+        // بناء نص الرسالة
+        var lines = [
+          'طلب حجز موعد — مركز حبيبة',
+          '------------------------',
+          'اسم ولي الأمر: ' + parentName,
+          'رقم الموبايل: ' + phone,
+          'عمر الطفل: ' + childAge,
+          'الخدمة المطلوبة: ' + service
+        ];
+        if (message) lines.push('رسالة إضافية: ' + message);
+
+        var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+        window.open(url, '_blank', 'noopener');
+      });
+    })();
+  </script>
+</body>
+</html>
